@@ -1,34 +1,12 @@
 import Status from "./Status";
 
-function UsersTable() {
+function UsersTable(props) {
 
-    // let idCount = 0;
-    // const setID = () => {
-    //   idCount++;
-    //   return idCount;
-    // };
-    // Michael ex. for data loop
-
-  const usersData = [
-    {
-      id: 1,
-      name: "Dottie Ward",
-      email: "dottie@company.com",
-      status: "active",
-    },
-    {
-      id: 2,
-      name: "David Blo",
-      email: "david@company.com",
-      status: "active",
-    },
-    {
-      id: 3,
-      name: "Cookie Smith",
-      email: "cookie@company.com",
-      status: "active",
-    },
-  ];
+    /*
+    props = {
+        users: [...]
+    }
+    */
 
   return (
     <table className="table table-hover">
@@ -41,11 +19,11 @@ function UsersTable() {
         </tr>
       </thead>
       <tbody>
-        {usersData.map(user => (
+        {props.users.map(user => (
           <tr key={user.id} className="bg-light">
             <td>{user.name}</td>
             <td>
-              <Status />
+              <Status type={user.status}/>
             </td>
             <td>{user.email}</td>
             <td>

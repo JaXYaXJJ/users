@@ -5,7 +5,7 @@ function Header() {
   const [email, setEmail] = useState("");
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
         <div className="d-flex">
           <a className="navbar-brand" href="#">
