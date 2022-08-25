@@ -8,6 +8,10 @@ function UsersTable(props) {
     }
     */
 
+    function handleDelete(user) {
+        props.deleteUser(user);
+    }
+
   return (
     <table className="table table-hover">
       <thead>
@@ -27,7 +31,7 @@ function UsersTable(props) {
             </td>
             <td>{user.email}</td>
             <td>
-              <button className="btn btn-default">
+              <button onClick={() => handleDelete(user)} className="btn btn-default">
                 <i className="bi-trash3"></i>
               </button>
             </td>

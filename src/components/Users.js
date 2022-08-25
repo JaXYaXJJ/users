@@ -4,7 +4,7 @@ import Message from "./Message";
 import UsersTable from "./UsersTable";
 
 function Users() {
-    
+
     // let idCount = 0;
     // const setID = () => { idCount++; return idCount; };
 
@@ -58,6 +58,18 @@ function Users() {
         setUsersData(updated);
     }
 
+    function deleteUser(user) {
+        
+         /*
+        const fruits = ['apple', 'orange'];
+        const fruits2 = fruits.filter(item => item === 'orange');
+        ['orange']
+        */
+
+        const updated = usersData.filter(userItem => userItem.id !== user.id);
+        setUsersData(updated);
+    }
+
     return (
         <>
             <Header addUser={addUser} />
@@ -66,7 +78,7 @@ function Users() {
                 usersData.length === 0 &&
                 <Message />
             }
-            <UsersTable users={usersData} />
+            <UsersTable users={usersData} deleteUser={deleteUser} />
         </>
     );
 }
