@@ -1,6 +1,14 @@
 import Status from "./Status";
 
 function UsersTable() {
+
+    // let idCount = 0;
+    // const setID = () => {
+    //   idCount++;
+    //   return idCount;
+    // };
+    // Michael ex. for data loop
+
   const usersData = [
     {
       id: 1,
