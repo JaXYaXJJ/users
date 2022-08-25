@@ -1,9 +1,5 @@
 function Status() {
-    return ( 
-        <span className="badge badge-success">
-            Active
-        </span>
-     );
+  return <span className="badge bg-success">Active</span>;
 }
 
 export default Status;
