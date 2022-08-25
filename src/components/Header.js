@@ -3,15 +3,20 @@ import { useState } from "react";
 function Header(props) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [status, setStatus] = useState('');
 
     function handleBtnClick(e) {
         // forms
         e.preventDefault();
 
+        if (email !== '' && name !== '') {
+
         props.addUser({
             name: name,
-            email: email
+            email: email,
+            status: status
         });
+    };
     }
 
     return (
@@ -28,6 +33,13 @@ function Header(props) {
                         <form className="d-flex">
                             <input value={name} onChange={(e) => setName(e.target.value)} className="form-control me-2" type="text" placeholder="Name" aria-label="Name" />
                             <input value={email} onChange={(e) => setEmail(e.target.value)} className="form-control me-2" type="text" placeholder="Email" aria-label="Email" />
+
+                            <select value={status} onChange={(e) => setStatus(e.target.value)} className="form-select me-2">
+                                <option>active</option>
+                                <option>expired</option>
+                                <option>banned</option>
+                            </select>
+
                             <button onClick={(e) => handleBtnClick(e)} className="btn btn-outline-success" type="submit">Add</button>
                         </form>
                     </div>
