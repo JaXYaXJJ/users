@@ -1,47 +1,74 @@
+import { useState } from "react";
 import Header from "./Header";
 import Message from "./Message";
 import UsersTable from "./UsersTable";
 
 function Users() {
-
+    
     // let idCount = 0;
-    // const setID = () => {
-    //   idCount++;
-    //   return idCount;
-    // };
-    // Michael ex. for data loop
+    // const setID = () => { idCount++; return idCount; };
 
-    const usersData = [
-        {
-          id: 1,
-          name: "Dottie Ward",
-          email: "dottie@company.com",
-          status: "active",
-        },
-        {
-          id: 2,
-          name: "David Blo",
-          email: "david@company.com",
-          status: "active",
-        },
-        {
-          id: 3,
-          name: "Cookie Smith",
-          email: "cookie@company.com",
-          status: "active",
-        },
-      ];
+    // state hook
+    const [usersData, setUsersData] = useState([]);
 
-  return (
-    <>
-      <Header />
-      {
-        usersData.length === 0 &&
-        <Message />
-      }
-      <UsersTable users={usersData}/>
-    </>
-  );
+    // const usersData = [];
+
+    // const usersData = [
+    //     {
+    //         id: 1,
+    //         name: 'Dottie Ward',
+    //         email: 'dottie@company.com',
+    //         status: 'active'
+    //     },
+    //     {
+    //         id: 2,
+    //         name: 'David Blo',
+    //         email: 'david@company.com',
+    //         status: 'active'
+    //     },
+    //     {
+    //         id: 3,
+    //         name: 'Cookie Smith',
+    //         email: 'cookie@company.com',
+    //         status: 'active'
+    //     },
+    // ];
+
+    /*
+    newUser = {
+        name: 'new user',
+        email: 'aa@aaa.com'
+    }
+    */
+
+    // lifting state up
+    function addUser(newUser) {
+        newUser.id = Math.random() + '';
+        newUser.status = 'active';
+
+        /*
+        const fruits = ['apple', 'orange'];
+        const fruits2 = [...fruits];
+        */
+
+        // js array push
+        // const updated = usersData.push(newUser);
+        // JS: spread operator ... > MDN
+        const updated = [...usersData, newUser];
+        setUsersData(updated);
+    }
+
+    return (
+        <>
+            <Header addUser={addUser} />
+            {/* conditional rendering */}
+            {
+                usersData.length === 0 &&
+                <Message />
+            }
+            <UsersTable users={usersData} />
+        </>
+    );
 }
 
 export default Users;
